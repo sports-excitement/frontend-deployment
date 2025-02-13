@@ -1,0 +1,27 @@
+name = "sports-excitement"
+main = "src/lib/cloudflare/workers/handlers.ts"
+compatibility_date = "2024-03-01"
+
+[build]
+command = "npm run build"
+
+# Public variables (included in build)
+[vars]
+FIREBASE_API_KEY = ""
+FIREBASE_AUTH_DOMAIN = ""
+FIREBASE_PROJECT_ID = ""
+
+# KV namespace for caching
+[[kv_namespaces]]
+binding = "CACHE_STORE"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Durable object for rate limiting
+[[durable_objects]]
+binding = "RATE_LIMITER"
+class_name = "RateLimiter"
+
+# Note: Secrets are managed separately using:
+# wrangler secret put FIREBASE_ADMIN_PROJECT_ID
+# wrangler secret put FIREBASE_ADMIN_PRIVATE_KEY
+# wrangler secret put FIREBASE_ADMIN_CLIENT_EMAIL

@@ -1,0 +1,13 @@
+/* styles.css */
+.gradient-bg {
+    position: absolute;
+    background: radial-gradient(circle, rgba(249, 184, 163) 0%, rgba(255,255,255,0) 62%);
+    z-index: 0; 
+    position: absolute;
+    top: 0px;
+    left: 600px;
+    width: 74%;
+    height: 90%;
+    pointer-events: none; /* Prevent it from capturing mouse events */
+  }
+  
