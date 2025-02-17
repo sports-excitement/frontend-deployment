@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '@/components/home/Hero';
+import Hero from '@/app/home/components/Hero';
 import SportsAndCategory from '@/app/home/components/SportsAndCategory';
 import DiscoverAndTrain from '@/app/home/components/DiscoverAndTrain';
 import SportsFeatures from '@/app/home/components/SportsFeatures';

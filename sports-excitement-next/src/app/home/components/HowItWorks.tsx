@@ -10,7 +10,6 @@ import {
   CalendarIcon,
   ChevronDownIcon,
 } from '@heroicons/react/24/outline';
-import PageLayout from '@/components/layouts/PageLayout';
 
 interface AccordionItemProps {
   id: string;
@@ -191,37 +190,35 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <PageLayout>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="
-              text-4xl md:text-5xl font-bold
-              bg-gradient-to-r from-[#20B486] to-[#0D8ECF] 
-              bg-clip-text text-transparent
-              leading-tight mb-4
-            ">
-              How It Works
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Get started with Sports Excitement in a few simple steps
-            </p>
-            <div className="w-16 h-1 bg-[#20B486] mx-auto mt-6" />
-          </div>
-
-          <div className="flex flex-col gap-4">
-            {accordionItems.map((item) => (
-              <AccordionItem
-                key={item.id}
-                {...item}
-                isExpanded={expanded === item.id}
-                onToggle={handleChange}
-              />
-            ))}
-          </div>
+    <div className="container-default py-16">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12">
+          <h2 className="
+            text-4xl md:text-5xl font-bold
+            bg-gradient-to-r from-[#20B486] to-[#0D8ECF] 
+            bg-clip-text text-transparent
+            leading-tight mb-4
+          ">
+            How It Works
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Get started with Sports Excitement in a few simple steps
+          </p>
+          <div className="w-16 h-1 bg-[#20B486] mx-auto mt-6" />
         </div>
-      </PageLayout>
-    </section>
+
+        <div className="flex flex-col gap-4">
+          {accordionItems.map((item) => (
+            <AccordionItem
+              key={item.id}
+              {...item}
+              isExpanded={expanded === item.id}
+              onToggle={handleChange}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -9,7 +9,6 @@ import {
   DocumentTextIcon,
   UserGroupIcon
 } from '@heroicons/react/24/outline';
-import PageLayout from '@/components/layouts/PageLayout';
 
 interface Feature {
   icon: React.ReactNode;
@@ -68,11 +67,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 const SportsFeatures: React.FC = () => {
   const features: Feature[] = [
     {
-      icon: <CalendarIcon className="w-8 h-8" />,
-      title: "Personalized Training Plans",
-      description: "Custom training schedules tailored to your needs",
-      link: "/training-plans",
-      color: '#FF4500'
+      icon: <CalendarIcon className="w-6 h-6" />,
+      title: "Schedule Training",
+      description: "Book sessions with top coaches at your convenience",
+      link: "/training",
+      color: "#FF4500"
     },
     {
       icon: <ClipboardDocumentIcon className="w-8 h-8" />,
@@ -112,36 +111,21 @@ const SportsFeatures: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <PageLayout>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="
-              text-3xl md:text-4xl font-bold text-gray-900
-              inline-block relative
-              after:content-['']
-              after:absolute after:-bottom-4 after:right-0
-              after:w-24 after:h-1 after:bg-[#20B486]
-              after:transform after:-rotate-2
-            ">
-              What Sports Excitement Offers
-            </h2>
-          </div>
-
-          <div className="
-            grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-            gap-8
-          ">
-            {features.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                {...feature}
-              />
-            ))}
-          </div>
-        </div>
-      </PageLayout>
-    </section>
+    <div className="container-default py-12">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          Discover Your Path to Athletic Excellence
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Whether you're just starting out or aiming for the pros, we have the tools and community to help you succeed.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((feature, index) => (
+          <FeatureCard key={index} {...feature} />
+        ))}
+      </div>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ interface SportsCardProps {
 
 const SportsCard: React.FC<SportsCardProps> = ({ title, ageGroup, expertise, imageUrl }) => {
   return (
-    <div className="flex flex-col w-64 h-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-500 justify-center p-2">
+    <div className="flex flex-col w-64 h-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-500 justify-center p-4 pb-6">
       <div className="relative flex justify-center">
         <img 
           src={imageUrl} 

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import SportsCard from '@/components/common/SportsCard';
 import Toggle from '@/components/common/Toggle';
 import PrimaryButton from '@/components/common/PrimaryButton';
-import PageLayout from '@/components/layouts/PageLayout';
 
 interface SportCardData {
   title: string;
@@ -77,44 +76,28 @@ const SportsAndCategory: React.FC = () => {
   ];
 
   return (
-    <div className="py-10">
-      <PageLayout>
-        <div className="text-center mb-8">
-          <h2 className="font-bold text-4xl text-black mb-2">
-            Our Most Popular Sports & Categories
-          </h2>
-          <p className="text-gray-500 font-light">
-            Get ready to discover and dive into your favorite sports, discover a world of athletic possibilities tailored to your interests.
-          </p>
+    <div className="container-default py-6">
+      <div className="text-center mb-6">
+        <h2 className="font-bold text-4xl text-black mb-2">
+          Our Most Popular Sports & Categories
+        </h2>
+        <p className="text-gray-500 font-light">
+          Get ready to discover and dive into your favorite sports, discover a world of athletic possibilities tailored to your interests.
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex justify-center mb-6">
+          <Toggle<Category>
+            options={['Youth', 'Adults']}
+            onToggle={handleCategoryChange}
+          />
         </div>
 
-        <div className="flex flex-col gap-1">
-          <div className="flex justify-center gap-4 mb-8">
-            <button
-              onClick={() => handleCategoryChange('Youth')}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                selectedCategory === 'Youth'
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              Youth
-            </button>
-            <button
-              onClick={() => handleCategoryChange('Adults')}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                selectedCategory === 'Adults'
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              Adults
-            </button>
-          </div>
-
-          {/* Scrollable Cards Container */}
-          <div className="w-full overflow-hidden">
-            <div className="overflow-x-auto overflow-y-hidden -mx-2 px-2 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-[#20B486] hover:scrollbar-thumb-[#1A9370] scrollbar-thumb-rounded scrollbar-track-rounded">
+        {/* Scrollable Cards Container */}
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-[#20B486] hover:scrollbar-thumb-[#1A9370] scrollbar-thumb-rounded scrollbar-track-rounded">
               <div className="flex gap-3 py-2 w-max">
                 {(selectedCategory === "Youth" ? youthData : adultData).map((card, index) => (
                   <div key={index} className="w-[300px] flex-shrink-0">
@@ -129,12 +112,12 @@ const SportsAndCategory: React.FC = () => {
               </div>
             </div>
           </div>
-
-          <div className="flex justify-end mt-2">
-            <PrimaryButton text="Explore all" />
-          </div>
         </div>
-      </PageLayout>
+
+        <div className="flex justify-end mt-2">
+          <PrimaryButton text="Explore all" />
+        </div>
+      </div>
     </div>
   );
 };

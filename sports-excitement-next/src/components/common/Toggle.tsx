@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
-interface ToggleProps {
-  options: string[];
-  onToggle: (option: string) => void;
+interface ToggleProps<T extends string> {
+  options: T[];
+  onToggle: (option: T) => void;
   width?: string;
   height?: string;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ 
+function Toggle<T extends string>({ 
   options = [], 
   onToggle, 
   width = '349px', 
   height = '50px' 
-}) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+}: ToggleProps<T>): React.ReactElement {
+  const [selectedOption, setSelectedOption] = useState<T>(options[0]);
 
-  const handleToggle = (newOption: string) => {
+  const handleToggle = (newOption: T) => {
     setSelectedOption(newOption);
     if (onToggle) {
       onToggle(newOption);
@@ -29,26 +29,26 @@ const Toggle: React.FC<ToggleProps> = ({
     >
       {/* Moving Background */}
       <div
-        className="absolute top-[10%] bg-orange-200 rounded-full transition-all duration-300"
+        className="absolute top-0 left-0 h-full bg-orange-200 rounded-full transition-all duration-300"
         style={{
-          width: `calc(${width} / ${options.length} - 10px)`,
-          height: '80%',
-          left: `${(options.indexOf(selectedOption) / options.length) * 100}%`,
-          transform: `translateX(${options.indexOf(selectedOption) === 0 ? '5px' : '0'})`,
+          width: `${100 / options.length}%`,
+          transform: `translateX(${options.indexOf(selectedOption) * 100}%)`
         }}
       />
-      
-      {/* Toggle Options */}
-      <div className="flex justify-between w-full h-full relative">
-        {options.map((option, idx) => (
+
+      {/* Options */}
+      <div className="relative flex h-full">
+        {options.map((option) => (
           <button
-            key={idx}
+            key={option}
             onClick={() => handleToggle(option)}
             className={`
-              flex-1 flex items-center justify-center rounded-2xl transition-all duration-300
-              hover:bg-transparent focus:outline-none
-              ${selectedOption === option ? 'text-white' : 'text-gray-500'}
-              relative z-10
+              flex-1 h-full
+              flex items-center justify-center
+              text-sm font-medium
+              transition-colors duration-300
+              z-10
+              ${selectedOption === option ? 'text-white' : 'text-gray-600'}
             `}
           >
             {option}
@@ -57,6 +57,6 @@ const Toggle: React.FC<ToggleProps> = ({
       </div>
     </div>
   );
-};
+}
 
 export default Toggle;

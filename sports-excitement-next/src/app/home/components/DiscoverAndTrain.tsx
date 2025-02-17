@@ -7,7 +7,6 @@ import {
   ClockIcon 
 } from '@heroicons/react/24/outline';
 import PrimaryButton from '@/components/common/PrimaryButton';
-import PageLayout from '@/components/layouts/PageLayout';
 
 interface StatCardProps {
   percentage: number;
@@ -35,9 +34,7 @@ const StatCard: React.FC<StatCardProps> = ({ percentage, label, icon }) => {
   );
 };
 
-interface DiscoverAndTrainProps {}
-
-const DiscoverAndTrain: React.FC<DiscoverAndTrainProps> = () => {
+const DiscoverAndTrain: React.FC = () => {
   const features = [
     'Customized training sessions, with coaches specializing in various sports and disciplines.',
     'Choose from in-person, online, or hybrid training options to fit your schedule.',
@@ -47,70 +44,57 @@ const DiscoverAndTrain: React.FC<DiscoverAndTrainProps> = () => {
   const stats = [
     {
       percentage: 29,
-      label: 'Strength & Power performance increased'
+      label: 'Strength & Power performance increased',
+      icon: <ChartBarIcon className="w-6 h-6 text-[#FF4500]" />
+    },
+    {
+      percentage: 85,
+      label: 'Athletes achieved their fitness goals',
+      icon: <CheckCircleIcon className="w-6 h-6 text-[#20B486]" />
+    },
+    {
+      percentage: 92,
+      label: 'Training sessions completed on schedule',
+      icon: <ClockIcon className="w-6 h-6 text-[#FF4500]" />
     },
     {
       percentage: 23,
-      label: 'Endurance & Resistance increased'
-    },
-    {
-      percentage: 19,
-      label: 'Improved technique within few months'
-    },
-    {
-      percentage: 33,
-      label: 'Recovery time decreased',
-      icon: <ClockIcon className="w-6 h-6 text-[#FF4500]" />
+      label: 'Endurance & Resistance improved',
+      icon: <ChartBarIcon className="w-6 h-6 text-[#20B486]" />
     }
   ];
 
   return (
-    <div className="py-6">
-      <PageLayout>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Left Section */}
-          <div className="md:col-span-4 flex flex-col items-center md:items-start">
-            <div className="mb-8 text-center md:text-left max-w-[500px] md:max-w-none">
-              <h2 className="text-2xl font-bold mb-6">
-                Discover & Train With Our Top Tier Coaches
-              </h2>
+    <div className="container-default py-16">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Discover & Train with Expert Coaches
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Take your athletic journey to the next level with personalized training from experienced coaches.
+            </p>
+          </div>
 
-              <div className="flex flex-col gap-4">
-                {features.map((feature, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-start gap-3 justify-center md:justify-start"
-                  >
-                    <CheckCircleIcon className="w-5 h-5 text-[#20B486] mt-1" />
-                    <p className="text-gray-600 text-center md:text-left">
-                      {feature}
-                    </p>
-                  </div>
-                ))}
+          <div className="space-y-4">
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <CheckCircleIcon className="w-6 h-6 text-[#20B486] flex-shrink-0 mt-1" />
+                <p className="text-gray-600">{feature}</p>
               </div>
-            </div>
-
-            <PrimaryButton 
-              text="Start Today" 
-              className="w-full md:w-auto py-2 mb-8 md:mb-0"
-            />
+            ))}
           </div>
 
-          {/* Stats Section */}
-          <div className="md:col-span-8">
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label} 
-                  className={`min-h-[100px] ${index % 2 === 1 ? 'mt-8' : ''}`}
-                >
-                  <StatCard {...stat} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <PrimaryButton text="Start Training Now" />
         </div>
-      </PageLayout>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {stats.map((stat, index) => (
+            <StatCard key={index} {...stat} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
