@@ -17,10 +17,10 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({ percentage, label, icon }) => {
   return (
     <div className="
-      p-6 h-32 bg-gray-50 rounded-lg
+      p-6 h-32 bg-gray-100 rounded-lg
       flex flex-col justify-between
       transition-all duration-200 ease-in-out
-      hover:bg-gray-100 hover:-translate-y-1
+      hover:bg-gray-50 hover:-translate-y-1
       shadow-sm hover:shadow-md
     ">
       <div className="flex justify-between items-center">
@@ -80,7 +80,7 @@ const DiscoverAndTrain: React.FC = () => {
           <div className="space-y-4">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start gap-3">
-                <CheckCircleIcon className="w-6 h-6 text-[#20B486] flex-shrink-0 mt-1" />
+                <CheckCircleIcon className="w-8 h-8 text-[#20B486] flex-shrink-0 mt-1" />
                 <p className="text-gray-600">{feature}</p>
               </div>
             ))}

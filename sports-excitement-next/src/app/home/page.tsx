@@ -18,17 +18,13 @@ export default function HomePage() {
         <Hero />
 
         {/* Sports and Categories */}
-        <div className="relative z-10 -mt-16">
-          <SportsAndCategory />
-        </div>
+        <SportsAndCategory />
 
         {/* Sports Features */}
         <SportsFeatures />
 
         {/* How It Works */}
-        <div className="bg-gray-50">
-          <HowItWorks />
-        </div>
+        <HowItWorks />
 
         {/* Discover and Train */}
         <DiscoverAndTrain />
@@ -37,9 +33,7 @@ export default function HomePage() {
         <Reviews />
 
         {/* Ignite and Nurture */}
-        <div className="bg-gray-50">
-          <IgniteAndNurture />
-        </div>
+        <IgniteAndNurture />
       </main>
       <Footer />
     </>

@@ -42,7 +42,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       hover:shadow-xl hover:-translate-y-1
     ">
       <div className="flex items-center mb-4">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
+        <div className="relative w-6 md:w-12 h-6 md:h-12 rounded-full overflow-hidden mr-4">
           <Image
             src={avatar}
             alt={`${name}'s avatar`}
