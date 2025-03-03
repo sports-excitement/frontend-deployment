@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
 import { auth } from '../firebase';
 import { GoogleAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail, User } from 'firebase/auth';
-import { loginWithEmailPassword, registerWithEmailPassword } from '../api';
-import { AuthState, RegisterRequest } from '../types';
+import { loginWithEmailPassword, registerWithEmailPassword } from '../api/api';
+import { AuthState, RegisterRequest } from '../api/types';
 
 export function useAuth() {
   const [state, setState] = useState<AuthState>({

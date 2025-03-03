@@ -18,7 +18,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ text }) => (
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full min-h-[85vh] flex items-center bg-off-white overflow-hidden">
+    <section className="relative w-full min-h-[85vh] flex items-center bg-gray-100 overflow-hidden">
       <div className="container mx-auto max-w-7xl min-h-[calc(100vh-4rem)] flex items-center pt-4 pb-16">
         <div className="flex flex-col md:flex-row items-center w-full">
           <div className="hero-content w-full md:w-1/2 z-10 flex flex-col justify-center space-y-6 px-6 md:px-8 lg:px-12">

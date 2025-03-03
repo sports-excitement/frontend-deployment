@@ -1,5 +1,5 @@
 import { ExecutionContext } from '@cloudflare/workers-types';
-import { validateFirebaseToken } from '@/lib/auth/api';
+import { validateFirebaseToken } from '@/lib/auth/api/api';
 
 interface ValidationResult {
   success: boolean;

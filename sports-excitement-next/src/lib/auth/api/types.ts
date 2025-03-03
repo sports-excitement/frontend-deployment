@@ -1,13 +1,23 @@
 import { User } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
+
+export interface FirebaseAuthResponse {
+  token: string;
+  user: {
+    uid: string;
+    email: string;
+    displayName?: string;
+    photoURL?: string;
+  };
+}
 
 export interface LoginRequest {
   email: string;
   password: string;
 }
 
-export interface RegisterRequest {
-  email: string;
-  password: string;
+export interface RegisterRequest extends LoginRequest {
+  displayName?: string;
   fullName: string;
 }
 
@@ -58,4 +68,21 @@ export interface AuthContextType {
   loginWithGoogle: () => Promise<User>;
   resetPassword: (email: string) => Promise<void>;
   logout: () => Promise<void>;
+}
+
+interface ErrorResponse {
+  message?: string;
+}
+
+export function isErrorResponse(obj: unknown): obj is ErrorResponse {
+  return typeof obj === 'object' && obj !== null && ('message' in obj || Object.keys(obj).length === 0);
+}
+
+export function isLoginResponse(obj: unknown): obj is LoginResponse {
+  return typeof obj === 'object' && obj !== null &&
+    'idToken' in obj && typeof obj.idToken === 'string' &&
+    'email' in obj && typeof obj.email === 'string' &&
+    'refreshToken' in obj && typeof obj.refreshToken === 'string' &&
+    'expiresIn' in obj && typeof obj.expiresIn === 'string' &&
+    'localId' in obj && typeof obj.localId === 'string';
 }

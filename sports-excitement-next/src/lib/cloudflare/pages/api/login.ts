@@ -1,4 +1,4 @@
-import { signInWithEmailPassword } from '@/lib/auth/api';
+import { signInWithEmailPassword } from '@/lib/auth/api/api';
 
 interface LoginRequest {
   email: string;

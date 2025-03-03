@@ -1,31 +1,6 @@
 import { FirebaseError } from 'firebase/app';
-import { LoginRequest, RegisterRequest, LoginResponse, RegisterResponse } from './types';
-
-interface ErrorResponse {
-  message?: string;
-}
-
-function isErrorResponse(obj: unknown): obj is ErrorResponse {
-  return typeof obj === 'object' && obj !== null && ('message' in obj || Object.keys(obj).length === 0);
-}
-
-function isLoginResponse(obj: unknown): obj is LoginResponse {
-  return typeof obj === 'object' && obj !== null &&
-    'idToken' in obj && typeof obj.idToken === 'string' &&
-    'email' in obj && typeof obj.email === 'string' &&
-    'refreshToken' in obj && typeof obj.refreshToken === 'string' &&
-    'expiresIn' in obj && typeof obj.expiresIn === 'string' &&
-    'localId' in obj && typeof obj.localId === 'string';
-}
-
-async function handleAuthResponse(response: Response): Promise<LoginResponse> {
-  if (!response.ok) {
-    const errorData = await response.json();
-    const message = isErrorResponse(errorData) ? errorData.message : 'Authentication failed';
-    throw new FirebaseError('auth/invalid-credentials', message || 'Authentication failed');
-  }
-  return response.json();
-}
+import { LoginRequest, LoginResponse, isErrorResponse, isLoginResponse } from '../types';
+import { handleAuthResponse } from './shared';
 
 export async function signInWithEmailPassword(
   email: string, 
@@ -85,46 +60,6 @@ export async function loginWithEmailPassword(email: string, password: string): P
       expiresIn: data.expiresIn,
       localId: data.localId,
       registered: data.registered ?? true
-    };
-  } catch (error) {
-    if (error instanceof FirebaseError) {
-      throw error;
-    }
-    if (error instanceof Error) {
-      throw new FirebaseError('auth/unknown', error.message);
-    }
-    throw new FirebaseError('auth/unknown', 'An unknown error occurred');
-  }
-}
-
-export async function registerWithEmailPassword(data: RegisterRequest): Promise<RegisterResponse> {
-  try {
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      const message = isErrorResponse(errorData) ? errorData.message : 'Registration failed';
-      throw new FirebaseError('auth/invalid-request', message || 'Registration failed');
-    }
-
-    const responseData = await response.json();
-    if (!isLoginResponse(responseData)) {
-      throw new FirebaseError('auth/invalid-response', 'Invalid response format from server');
-    }
-
-    return {
-      idToken: responseData.idToken,
-      email: responseData.email,
-      refreshToken: responseData.refreshToken,
-      expiresIn: responseData.expiresIn,
-      localId: responseData.localId,
-      registered: true
     };
   } catch (error) {
     if (error instanceof FirebaseError) {

@@ -6,7 +6,7 @@ import { UserIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import PrimaryButton from '@/components/common/PrimaryButton';
 import { useAuth } from '@/lib/auth/hooks/useAuth';
-import type { RegisterRequest } from '@/lib/auth/types';
+import type { RegisterRequest } from '@/lib/auth/api/types';
 
 interface RegisterFormData extends RegisterRequest {
   confirmPassword: string;
