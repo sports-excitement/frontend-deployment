@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { HomeIcon, UserIcon, InformationCircleIcon, SparklesIcon } from '@heroicons/react/24/outline';
 

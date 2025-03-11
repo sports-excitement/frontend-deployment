@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "shadcn": "^2.3.0"
+    "@supabase/supabase-js": "^2.49.1",
+    "shadcn": "^2.3.0",
+    "supabase": "^2.15.8"
   }
 }

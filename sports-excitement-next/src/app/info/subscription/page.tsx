@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { ArrowPathIcon, CreditCardIcon, XCircleIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 

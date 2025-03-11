@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useAuth } from '@/lib/auth/hooks/useAuth';
+import { useAuth } from '@/lib/cloudflare/api/auth/hooks/useAuth';
 import PrimaryButton from '@/components/common/PrimaryButton';
 
 interface ResetPasswordState {

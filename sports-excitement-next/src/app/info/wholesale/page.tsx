@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { CubeIcon, TruckIcon, UserIcon, TagIcon } from '@heroicons/react/24/outline';
 

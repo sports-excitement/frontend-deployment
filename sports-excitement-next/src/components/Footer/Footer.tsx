@@ -96,32 +96,35 @@ const SocialButton: React.FC<{
 const Footer: React.FC = () => {
   const footerLinks: Record<string, FooterSection> = {
     company: {
-      title: 'Company',
+      title: "Company",
       links: [
-        { name: 'About Us', path: '/info/about' },
-        { name: 'FAQ', path: '/info/faq' },
-        { name: 'Contact', path: '/info/contact' },
-        { name: 'Sitemap', path: '/info/sitemap' }
-      ]
-    },
-    support: {
-      title: 'Support',
-      links: [
-        { name: 'Help Center', path: '/info/help' },
-        { name: 'Safety', path: '/info/safety' },
-        { name: 'Community', path: '/info/community' },
-        { name: 'Wholesale', path: '/info/wholesale' }
-      ]
+        { name: "About Us", path: "/info/about" },
+        { name: "FAQ", path: "/info/faq" },
+        { name: "Contact", path: "/info/contact" },
+      ],
     },
     legal: {
-      title: 'Legal',
+      title: "Legal",
       links: [
-        { name: 'Privacy Policy', path: '/info/privacy' },
-        { name: 'Terms of Service', path: '/info/terms' },
-        { name: 'Shipping', path: '/info/shipping' },
-        { name: 'Ambassador Program', path: '/info/ambassador' }
-      ]
-    }
+        { name: "Privacy", path: "/info/privacy" },
+        { name: "Terms", path: "/info/terms" },
+        { name: "Shipping", path: "/info/shipping" },
+      ],
+    },
+    programs: {
+      title: "Programs",
+      links: [
+        { name: "Wholesale", path: "/info/wholesale" },
+        { name: "Ambassador", path: "/info/ambassador" },
+        { name: "Subscription", path: "/info/subscription" },
+      ],
+    },
+    resources: {
+      title: "Resources",
+      links: [
+        { name: "Sitemap", path: "/info/sitemap" },
+      ],
+    },
   };
 
   const socialLinks: SocialLink[] = [
@@ -168,7 +171,7 @@ const Footer: React.FC = () => {
 
           {/* Links Sections */}
           <div className="md:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               {Object.entries(footerLinks).map(([key, section]) => (
                 <FooterLinkSection
                   key={key}
@@ -199,6 +202,12 @@ const Footer: React.FC = () => {
               className="text-sm text-gray-600 hover:text-[#FF4500] transition-colors duration-200"
             >
               Terms of Service
+            </Link>
+            <Link
+              href="/info/shipping"
+              className="text-sm text-gray-600 hover:text-[#FF4500] transition-colors duration-200"
+            >
+              Shipping Policy
             </Link>
           </div>
         </div>

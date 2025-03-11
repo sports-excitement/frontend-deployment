@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -5,10 +7,12 @@ import Image from 'next/image';
 import { UserIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import PrimaryButton from '@/components/common/PrimaryButton';
-import { useAuth } from '@/lib/auth/hooks/useAuth';
-import type { RegisterRequest } from '@/lib/auth/api/types';
+import { useAuth } from '@/lib/cloudflare/api/auth/hooks/useAuth';
 
-interface RegisterFormData extends RegisterRequest {
+interface RegisterFormData {
+  email: string;
+  password: string;
+  fullName: string;
   confirmPassword: string;
 }
 
@@ -58,11 +62,12 @@ const RegisterPage: React.FC = () => {
 
     try {
       const { confirmPassword, ...registerData } = formData;
-      await register(registerData);
-      setState({
+      await register(registerData); 
+      setState(prev => ({
+        ...prev,
         isRegistered: true,
         message: `Hello ${formData.fullName}, your account has been created successfully!`
-      });
+      }));
     } catch (error) {
       // Error is handled by the useAuth hook
     }
@@ -71,10 +76,13 @@ const RegisterPage: React.FC = () => {
   const handleGoogleRegister = async () => {
     try {
       const user = await loginWithGoogle();
-      setState({
-        isRegistered: true,
-        message: `Hello ${user.displayName || ''}, your account has been created successfully!`
-      });
+      if (user) {
+        setState(prev => ({
+          ...prev,
+          isRegistered: true,
+          message: `Hello ${user.displayName || 'User'}, your account has been created successfully!`
+        }));
+      }
     } catch (error) {
       // Error is handled by the useAuth hook
     }
