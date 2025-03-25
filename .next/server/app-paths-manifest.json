@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/info/about/page": "app/info/about/page.js",
+  "/info/ambassador/page": "app/info/ambassador/page.js",
+  "/info/contact/page": "app/info/contact/page.js",
+  "/info/faq/page": "app/info/faq/page.js",
+  "/info/sitemap/page": "app/info/sitemap/page.js",
+  "/info/wholesale/page": "app/info/wholesale/page.js",
+  "/page": "app/page.js"
+}
